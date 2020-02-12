@@ -1,6 +1,4 @@
-function createPage(emps){
-    let employeeSection=
-    `<!doctype html>
+<!doctype html>
     <html lang="en">
     
     <head>
@@ -63,77 +61,42 @@ function createPage(emps){
         <div class="container">
             <h1>Your Beautiful Employees: </h1>
     
-            <div class="row contentRow">`;
-emps.forEach(element => {
-    let ePanel="";
-    switch(element.title){
-        case "Manager":
-            ePanel = createManagerPanel(element);
-            break;
-        case "Engineer":
-            ePanel=createEngineerPanel(element);
-            break;
-        case "Intern":
-            ePanel = createInternPanel(element);
-            break;
-    }//switch
-    employeeSection+=ePanel;
-});//for each employee
-employeeSection+=`  <!--End Row-->
+            <div class="row contentRow"><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 eCol manager">
+    <div class="eHead">
+        <h2>garrett</h3>
+        <h4>Manager ☕</h4>
+    </div>
+    <ul>
+    <li>ID: <span>1</span></li>
+    <li>Email: <a href="gsreichman@gmail.com">gsreichman@gmail.com</a></li>
+    <li>Office Number: <span>123</span></li>
+    </ul>
+    </div>
+    <!-- col end --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 eCol engineer">
+<div class="eHead">
+    <h2>tom</h3>
+    <h4>Engineer 💻</h4>
+</div>
+<ul>
+<li>ID: <span>2</span></li>
+<li>Email: <a href="tom@email.com">tom@email.com</a></li>
+<li>Github: <a href="https://www.github.com/greichman">greichman</a></li>
+</ul>
+</div>
+<!-- col end --><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 eCol intern">
+<div class="eHead">
+    <h2>Steve</h3>
+    <h4>Intern 📚</h4>
+</div>
+<ul>
+<li>ID: <span>69</span></li>
+<li>Email: <a href="yeet@69.swag">yeet@69.swag</a></li>
+<li>School: <span>Auburn</span></li>
+</ul>
+</div>
+<!-- col end -->  <!--End Row-->
 </div>
 </div>
 </body>
 
-</html>`;
-
-return employeeSection;
-}
-
-function createEngineerPanel(eng){
-return `<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 eCol engineer">
-<div class="eHead">
-    <h2>${eng.name}</h3>
-    <h4>Engineer 💻</h4>
-</div>
-<ul>
-<li>ID: <span>${eng.id}</span></li>
-<li>Email: <a href="${eng.email}">${eng.email}</a></li>
-<li>Github: <a href="https://www.github.com/${eng.github}">${eng.github}</a></li>
-</ul>
-</div>
-<!-- col end -->`
-}//engineerPanel
-
-function createManagerPanel(man){
-    return `<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 eCol manager">
-    <div class="eHead">
-        <h2>${man.name}</h3>
-        <h4>Manager ☕</h4>
-    </div>
-    <ul>
-    <li>ID: <span>${man.id}</span></li>
-    <li>Email: <a href="${man.email}">${man.email}</a></li>
-    <li>Office Number: <span>${man.officeNumber}</span></li>
-    </ul>
-    </div>
-    <!-- col end -->`
-}//managerPanel
-
-function createInternPanel(inter){
-return `<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 eCol intern">
-<div class="eHead">
-    <h2>${inter.name}</h3>
-    <h4>Intern 📚</h4>
-</div>
-<ul>
-<li>ID: <span>${inter.id}</span></li>
-<li>Email: <a href="${inter.email}">${inter.email}</a></li>
-<li>School: <span>${inter.school}</span></li>
-</ul>
-</div>
-<!-- col end -->`
-}//internPanel
-
-module.exports = {
-    createPage: createPage
-};
+</html>

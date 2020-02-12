@@ -24,7 +24,11 @@ async function appManager() {
         console.log(info);
         let emp = await createEmployee(info);
 
+        employeeArr.push(emp);
+        
+
         console.log(emp);
+        appManager();
 
     }//if adding employee
     else if (cont.continue.toLowerCase() === "n") {
@@ -32,6 +36,11 @@ async function appManager() {
         if (employeeArr.length === 0) {
             console.log("Cannot create page with no employees");
             appManager();
+        }//if no employees
+        else{
+           const pg =pageMaker.createPage(employeeArr);
+
+           asyncWrite("./output/team.html",pg);
         }
 
     }//else done adding employees
