@@ -11,6 +11,7 @@ const Intern = require("./lib/Intern");
 const pageMaker = require("./page");
 
 const employeeArr = [];
+let hasManager=false;
 
 
 appManager();
@@ -23,18 +24,30 @@ async function appManager() {
         let info = await requestInfo();
         console.log(info);
         let emp = await createEmployee(info);
-
-        employeeArr.push(emp);
-        
-
-        console.log(emp);
-        appManager();
+        if(emp.title==="Manager" && hasManager==true){
+            console.log("Only one manager is allowed");
+            appManager();
+        }//if trying to add new manager
+        else if(emp.title=="Manager"){
+            employeeArr.push(emp);
+    
+            console.log(emp);
+            hasManager=true;
+            appManager();
+        }
+        else{
+            
+            employeeArr.push(emp);
+    
+            console.log(emp);
+            appManager();
+        }//else no manager yet
 
     }//if adding employee
     else if (cont.continue.toLowerCase() === "n") {
 
-        if (employeeArr.length === 0) {
-            console.log("Cannot create page with no employees");
+        if (employeeArr.length === 0 || hasManager==false) {
+            console.log("Page must contain at least a manager");
             appManager();
         }//if no employees
         else{
@@ -61,9 +74,6 @@ function continueRequest() {
     )
 }
 
-function writeFile() {
-
-}
 
 function requestInfo() {
 
