@@ -22,7 +22,7 @@ async function appManager() {
 
     if (cont.continue.toLowerCase() === "y") {
         let info = await requestInfo();
-        console.log(info);
+        // console.log(info);
         let emp = await createEmployee(info);
         if(emp.title==="Manager" && hasManager==true){
             console.log("Only one manager is allowed");
@@ -54,6 +54,7 @@ async function appManager() {
            const pg =pageMaker.createPage(employeeArr);
 
            asyncWrite("./output/team.html",pg);
+           console.log("file created");
         }
 
     }//else done adding employees
